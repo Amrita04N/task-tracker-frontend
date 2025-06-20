@@ -23,18 +23,16 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        "https://task-tracker-backend-27lk.onrender.com/login",
-        new URLSearchParams({
-          username: formData.username,
-          password: formData.password
-        }),
-        {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          }
-        }
-      );
+      const response = await axios.post("https://task-tracker-backend-27lk.onrender.com/auth/login", 
+  new URLSearchParams({
+    username: formData.username,
+    password: formData.password
+  }), 
+  {
+    headers: { "Content-Type": "application/x-www-form-urlencoded" }
+  }
+);
+
 
       localStorage.setItem("token", response.data.access_token);
       setMessage("Login successful! ✅");
